@@ -1,4 +1,6 @@
 package de.volkswagen.staff;
 
-public class Owner extends Staff{
+import de.volkswagen.models.JobPositionComponent;
+
+public class Owner extends JobPositionComponent {
 }

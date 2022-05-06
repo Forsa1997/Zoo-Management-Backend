@@ -1,6 +1,8 @@
 package de.volkswagen.staff;
 
-public class Sale extends Staff{
+import de.volkswagen.models.JobPositionComponent;
+
+public class Sale extends JobPositionComponent {
 
     private Vendor vendor;
 

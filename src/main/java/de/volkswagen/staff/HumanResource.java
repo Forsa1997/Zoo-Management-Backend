@@ -1,4 +1,6 @@
 package de.volkswagen.staff;
 
-public class HumanResource extends Staff{
+import de.volkswagen.models.JobPositionComponent;
+
+public class HumanResource extends JobPositionComponent {
 }

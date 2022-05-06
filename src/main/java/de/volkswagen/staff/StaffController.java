@@ -36,19 +36,27 @@ public class StaffController {
     }
 
     @PutMapping("/{staffId}/enclosure/{enclosureId}")
-    public Enclosure assignStaffToEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
-
+    public Enclosure assignStaffToEnclosure(
+            @PathVariable("staffId") Long staffId,
+            @PathVariable("enclosureId") Long enclosureId
+    ){
         return null;
     }
 
     @PatchMapping("/{staffId}/enclosure/{enclosureId}")
-    public Enclosure patchStaffFromEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
+    public Enclosure patchStaffFromEnclosure(
+            @PathVariable("staffId") Long staffId,
+            @PathVariable("enclosureId") Long enclosureId
+    ){
 
         return null;
     }
 
     @DeleteMapping("/{staffId}/enclosure/{enclosureId}")
-    public Enclosure deleteStaffFromEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
+    public Enclosure deleteStaffFromEnclosure(
+            @PathVariable("staffId") Long staffId,
+            @PathVariable("enclosureId") Long enclosureId
+    ){
 
         return null;
     }

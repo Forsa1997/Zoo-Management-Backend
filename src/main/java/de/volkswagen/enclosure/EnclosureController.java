@@ -17,31 +17,43 @@ public class EnclosureController {
     }
 
     @PutMapping
-    public Enclosure putEnclosure(@RequestBody Enclosure enclosure){
+    public Enclosure putEnclosure(
+            @RequestBody Enclosure enclosure
+    ){
 
         return null;
     }
 
     @PatchMapping
-    public Enclosure patchEnclosure(@RequestBody Enclosure enclosure){
+    public Enclosure patchEnclosure(
+            @RequestBody Enclosure enclosure
+    ){
 
         return null;
     }
 
     @DeleteMapping("/{enclosureId}")
-    public boolean deleteEnclosure(@PathVariable("enclosureId") Long enclosureId){
+    public boolean deleteEnclosure(
+            @PathVariable("enclosureId") Long enclosureId
+    ){
 
         return false;
     }
 
     @PutMapping("/{enclosureId}/animal/{animalId}")
-    public Enclosure putAnimalIntoEnclosure(@PathVariable("enclosureId") Long enclosureId, @PathVariable("animalId") Long animalId){
+    public Enclosure putAnimalIntoEnclosure(
+            @PathVariable("enclosureId") Long enclosureId,
+            @PathVariable("animalId") Long animalId
+    ){
 
         return null;
     }
 
     @DeleteMapping("/{enclosureId}/animal/{animalId}")
-    public Enclosure deleteAnimalFromEnclosure(@PathVariable("enclosureId") Long enclosureId, @PathVariable("animalId") Long animalId){
+    public Enclosure deleteAnimalFromEnclosure(
+            @PathVariable("enclosureId") Long enclosureId,
+            @PathVariable("animalId") Long animalId
+    ){
 
         return null;
     }

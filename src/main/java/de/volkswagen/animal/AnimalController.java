@@ -18,19 +18,25 @@ public class AnimalController {
     }
 
     @PutMapping
-    public Animal putAnimal(@RequestBody Animal animal){
+    public Animal putAnimal(
+            @RequestBody Animal animal
+    ){
 
         return null;
     }
 
     @PatchMapping
-    public Animal patchAnimal(@RequestBody Animal animal){
+    public Animal patchAnimal(
+            @RequestBody Animal animal
+    ){
 
         return null;
     }
 
     @DeleteMapping("/{animalId}")
-    public boolean deleteAnimal(@PathVariable("animalId") Long animalId){
+    public boolean deleteAnimal(
+            @PathVariable("animalId") Long animalId
+    ) {
 
         return false;
     }

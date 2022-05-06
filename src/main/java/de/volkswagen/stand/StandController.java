@@ -1,6 +1,5 @@
 package de.volkswagen.stand;
 
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,46 +8,61 @@ import java.util.List;
 @RequestMapping("/stand")
 public class StandController {
 
-        @GetMapping
-        public List<Stand> getStand(){
+    @GetMapping
+    public List<Stand> getStand() {
 
-                return null;
-        }
+        return null;
+    }
 
-        @PutMapping
-        public Stand putStand(@RequestBody Stand stand){
+    @PutMapping
+    public Stand putStand(
+            @RequestBody Stand stand
+    ) {
 
-                return null;
-        }
+        return null;
+    }
 
-        @PatchMapping
-        public Stand patchStand(@RequestBody Stand stand){
+    @PatchMapping
+    public Stand patchStand(
+            @RequestBody Stand stand
+    ) {
 
-                return null;
-        }
+        return null;
+    }
 
-        @DeleteMapping("/{standId}")
-        public boolean deleteStand(@PathVariable("standId") Long standId){
+    @DeleteMapping("/{standId}")
+    public boolean deleteStand(
+            @PathVariable("standId") Long standId
+    ) {
 
-                return false;
-        }
+        return false;
+    }
 
-        @PutMapping("/{standId}/staff/{staffId}")
-        public Stand assignStaffIntoStand(@PathVariable("standId") Long standId, @PathVariable("staffId") Long staffId){
+    @PutMapping("/{standId}/staff/{staffId}")
+    public Stand assignStaffIntoStand(
+            @PathVariable("standId") Long standId,
+            @PathVariable("staffId") Long staffId
+    ) {
 
-                return null;
-        }
+        return null;
+    }
 
-        @DeleteMapping("/{standId}/staff/{staffId}")
-        public Stand deleteStaffFromStand(@PathVariable("standId") Long standId, @PathVariable("staffId") Long staffId){
+    @DeleteMapping("/{standId}/staff/{staffId}")
+    public Stand deleteStaffFromStand(
+            @PathVariable("standId") Long standId,
+            @PathVariable("staffId") Long staffId
+    ) {
 
-                return null;
-        }
+        return null;
+    }
 
-        @PatchMapping("/{standId}/staff/{staffId}")
-        public Stand patchStaffFromStand(@PathVariable("standId") Long standId, @PathVariable("staffId") Long staffId){
+    @PatchMapping("/{standId}/staff/{staffId}")
+    public Stand patchStaffFromStand(
+            @PathVariable("standId") Long standId,
+            @PathVariable("staffId") Long staffId
+    ) {
 
-                return null;
-        }
+        return null;
+    }
 
 }
