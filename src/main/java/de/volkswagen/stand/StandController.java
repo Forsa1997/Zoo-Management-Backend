@@ -16,13 +16,13 @@ public class StandController {
         }
 
         @PutMapping
-        public Stand putStand(Stand stand){
+        public Stand putStand(@RequestBody Stand stand){
 
                 return null;
         }
 
         @PatchMapping
-        public Stand patchStand(Stand stand){
+        public Stand patchStand(@RequestBody Stand stand){
 
                 return null;
         }

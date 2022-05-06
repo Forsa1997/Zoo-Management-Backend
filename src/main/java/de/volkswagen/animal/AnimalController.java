@@ -18,13 +18,13 @@ public class AnimalController {
     }
 
     @PutMapping
-    public Animal putAnimal(Animal animal){
+    public Animal putAnimal(@RequestBody Animal animal){
 
         return null;
     }
 
     @PatchMapping
-    public Animal patchAnimal(Animal animal){
+    public Animal patchAnimal(@RequestBody Animal animal){
 
         return null;
     }

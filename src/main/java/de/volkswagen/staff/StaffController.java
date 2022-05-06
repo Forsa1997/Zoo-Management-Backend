@@ -18,13 +18,13 @@ public class StaffController {
     }
 
     @PutMapping
-    public Staff putStaff(Staff staff){
+    public Staff putStaff(@RequestBody Staff staff){
 
         return null;
     }
 
     @PatchMapping
-    public Staff patchStaff(Staff staff){
+    public Staff patchStaff(@RequestBody Staff staff){
 
         return null;
     }

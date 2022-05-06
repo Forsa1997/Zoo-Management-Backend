@@ -17,13 +17,13 @@ public class EnclosureController {
     }
 
     @PutMapping
-    public Enclosure putEnclosure(Enclosure enclosure){
+    public Enclosure putEnclosure(@RequestBody Enclosure enclosure){
 
         return null;
     }
 
     @PatchMapping
-    public Enclosure patchEnclosure(Enclosure enclosure){
+    public Enclosure patchEnclosure(@RequestBody Enclosure enclosure){
 
         return null;
     }
