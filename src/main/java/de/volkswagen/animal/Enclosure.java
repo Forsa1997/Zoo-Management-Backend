@@ -1,4 +1,4 @@
-package de.volkswagen.models.animal;
+package de.volkswagen.animal;
 
 import de.volkswagen.models.Cost;
 

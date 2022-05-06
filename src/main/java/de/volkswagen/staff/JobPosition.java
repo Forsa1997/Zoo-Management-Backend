@@ -1,4 +1,4 @@
-package de.volkswagen.models.staff;
+package de.volkswagen.staff;
 
 public enum JobPosition {
     OWNER,

@@ -1,6 +1,6 @@
-package de.volkswagen.models.staff;
+package de.volkswagen.staff;
 
-import de.volkswagen.models.animal.Enclosure;
+import de.volkswagen.animal.Enclosure;
 
 import java.util.List;
 

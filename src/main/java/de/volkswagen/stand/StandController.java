@@ -1,52 +1,51 @@
-package de.volkswagen.controller;
+package de.volkswagen.stand;
 
 
-import de.volkswagen.models.Stand;
-import de.volkswagen.models.animal.Enclosure;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/stand")
 public class StandController {
 
-        @GetMapping("/stand")
+        @GetMapping
         public List<Stand> getStand(){
 
                 return null;
         }
 
-        @PutMapping("/stand")
+        @PutMapping
         public Stand putStand(Stand stand){
 
                 return null;
         }
 
-        @PatchMapping("/stand")
+        @PatchMapping
         public Stand patchStand(Stand stand){
 
                 return null;
         }
 
-        @DeleteMapping("/stand/{standId}")
+        @DeleteMapping("/{standId}")
         public boolean deleteStand(@PathVariable("standId") Long standId){
 
                 return false;
         }
 
-        @PutMapping("/stand/{standId}/staff/{staffId}")
+        @PutMapping("/{standId}/staff/{staffId}")
         public Stand assignStaffIntoStand(@PathVariable("standId") Long standId, @PathVariable("staffId") Long staffId){
 
                 return null;
         }
 
-        @DeleteMapping("/stand/{standId}/staff/{staffId}")
+        @DeleteMapping("/{standId}/staff/{staffId}")
         public Stand deleteStaffFromStand(@PathVariable("standId") Long standId, @PathVariable("staffId") Long staffId){
 
                 return null;
         }
 
-        @PatchMapping("/stand/{standId}/staff/{staffId}")
+        @PatchMapping("/{standId}/staff/{staffId}")
         public Stand patchStaffFromStand(@PathVariable("standId") Long standId, @PathVariable("staffId") Long staffId){
 
                 return null;

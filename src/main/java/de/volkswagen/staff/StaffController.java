@@ -1,53 +1,53 @@
-package de.volkswagen.controller;
+package de.volkswagen.staff;
 
 
-import de.volkswagen.models.animal.Enclosure;
-import de.volkswagen.models.staff.Staff;
+import de.volkswagen.animal.Enclosure;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/staff")
 public class StaffController {
 
 
-    @GetMapping("/staff")
+    @GetMapping
     public List<Staff> getStaff(){
 
         return null;
     }
 
-    @PutMapping("/staff")
+    @PutMapping
     public Staff putStaff(Staff staff){
 
         return null;
     }
 
-    @PatchMapping("/staff")
+    @PatchMapping
     public Staff patchStaff(Staff staff){
 
         return null;
     }
 
-    @DeleteMapping("/staff/{staffId}")
+    @DeleteMapping("/{staffId}")
     public boolean deleteStaff(@PathVariable("staffId") Long staffId){
 
        return false;
     }
 
-    @PutMapping("/staff/{staffId}/enclosure/{enclosureId}")
+    @PutMapping("/{staffId}/enclosure/{enclosureId}")
     public Enclosure assignStaffToEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
 
         return null;
     }
 
-    @PatchMapping("/staff/{staffId}/enclosure/{enclosureId}")
+    @PatchMapping("/{staffId}/enclosure/{enclosureId}")
     public Enclosure patchStaffFromEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
 
         return null;
     }
 
-    @DeleteMapping("/staff/{staffId}/enclosure/{enclosureId}")
+    @DeleteMapping("/{staffId}/enclosure/{enclosureId}")
     public Enclosure deleteStaffFromEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
 
         return null;

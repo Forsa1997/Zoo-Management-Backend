@@ -1,8 +1,4 @@
-package de.volkswagen.models.staff;
-
-import de.volkswagen.models.staff.Address;
-import de.volkswagen.models.staff.BankInfo;
-import de.volkswagen.models.staff.JobPosition;
+package de.volkswagen.staff;
 
 import java.util.Set;
 

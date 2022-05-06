@@ -1,46 +1,46 @@
-package de.volkswagen.controller;
+package de.volkswagen.enclosure;
 
 
-import de.volkswagen.models.animal.Enclosure;
-import de.volkswagen.models.staff.Staff;
+import de.volkswagen.animal.Enclosure;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/enclosure")
 public class EnclosureController {
 
-    @GetMapping("/enclosure")
+    @GetMapping
     public List<Enclosure> getEnclosures(){
 
         return null;
     }
 
-    @PutMapping("/enclosure")
+    @PutMapping
     public Enclosure putEnclosure(Enclosure enclosure){
 
         return null;
     }
 
-    @PatchMapping("/enclosure")
+    @PatchMapping
     public Enclosure patchEnclosure(Enclosure enclosure){
 
         return null;
     }
 
-    @DeleteMapping("/enclosure/{enclosureId}")
+    @DeleteMapping("/{enclosureId}")
     public boolean deleteEnclosure(@PathVariable("enclosureId") Long enclosureId){
 
         return false;
     }
 
-    @PutMapping("/enclosure/{enclosureId}/animal/{animalId}")
+    @PutMapping("/{enclosureId}/animal/{animalId}")
     public Enclosure putAnimalIntoEnclosure(@PathVariable("enclosureId") Long enclosureId, @PathVariable("animalId") Long animalId){
 
         return null;
     }
 
-    @DeleteMapping("/enclosure/{enclosureId}/animal/{animalId}")
+    @DeleteMapping("/{enclosureId}/animal/{animalId}")
     public Enclosure deleteAnimalFromEnclosure(@PathVariable("enclosureId") Long enclosureId, @PathVariable("animalId") Long animalId){
 
         return null;

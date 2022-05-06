@@ -1,4 +1,6 @@
-package de.volkswagen.models;
+package de.volkswagen.stand;
+
+import de.volkswagen.models.StandType;
 
 public class Stand {
 
