@@ -1,6 +1,7 @@
 package de.volkswagen.controller;
 
 
+import de.volkswagen.models.animal.Enclosure;
 import de.volkswagen.models.staff.Staff;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +34,25 @@ public class StaffController {
 
        return false;
     }
+
+    @PutMapping("/staff/{staffId}/enclosure/{enclosureId}")
+    public Enclosure assignStaffToEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
+
+        return null;
+    }
+
+    @PatchMapping("/staff/{staffId}/enclosure/{enclosureId}")
+    public Enclosure patchStaffFromEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
+
+        return null;
+    }
+
+    @DeleteMapping("/staff/{staffId}/enclosure/{enclosureId}")
+    public Enclosure deleteStaffFromEnclosure( @PathVariable("staffId") Long staffId, @PathVariable("enclosureId") Long enclosureId){
+
+        return null;
+    }
+
 
 
 
