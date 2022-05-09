@@ -1,10 +1,10 @@
-package com.example.zoomanagementbackend;
+package de.volkswagen;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ZooManagementBackendApplicationTests {
+class ApplicationTest {
 
     @Test
     void contextLoads() {
