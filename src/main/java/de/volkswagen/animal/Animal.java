@@ -10,6 +10,9 @@ public class Animal {
     private Cost cost;
 
 
+
+
+
     public Cost getCost() {
         return cost;
     }
