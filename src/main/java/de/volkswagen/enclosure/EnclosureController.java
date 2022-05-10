@@ -1,13 +1,12 @@
 package de.volkswagen.enclosure;
 
 
-import de.volkswagen.animal.Enclosure;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/enclosure")
+@RequestMapping("/api/enclosure")
 public class EnclosureController {
 
     @GetMapping
@@ -16,12 +15,14 @@ public class EnclosureController {
         return null;
     }
 
-    @PutMapping
-    public Enclosure putEnclosure(
+    @PostMapping
+            //(consumes = "application/json", produces = "application/json")
+    public Enclosure postEnclosure(
             @RequestBody Enclosure enclosure
     ){
 
-        return null;
+        System.out.println(enclosure);
+        return enclosure;
     }
 
     @PatchMapping

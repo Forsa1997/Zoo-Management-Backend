@@ -1,9 +1,27 @@
 package de.volkswagen.models;
 
+import java.util.Objects;
+
 public class Cost {
 
     private long monthlyCost;
 
+
+    public Cost() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cost cost = (Cost) o;
+        return monthlyCost == cost.monthlyCost;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(monthlyCost);
+    }
 
     public Cost(long monthlyCost) {
         this.monthlyCost = monthlyCost;
