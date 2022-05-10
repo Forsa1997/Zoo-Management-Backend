@@ -1,6 +1,5 @@
 package de.volkswagen.enclosure;
 
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,6 +8,13 @@ import java.util.List;
 @RequestMapping("/api/enclosure")
 public class EnclosureController {
 
+    private EnclosureService enclosureService;
+
+    public EnclosureController(EnclosureService enclosureService){
+        this.enclosureService = enclosureService;
+    }
+
+
     @GetMapping
     public List<Enclosure> getEnclosures(){
 
@@ -16,13 +22,10 @@ public class EnclosureController {
     }
 
     @PostMapping
-            //(consumes = "application/json", produces = "application/json")
     public Enclosure postEnclosure(
             @RequestBody Enclosure enclosure
     ){
-
-        System.out.println(enclosure);
-        return enclosure;
+        return enclosureService.create(enclosure);
     }
 
     @PatchMapping

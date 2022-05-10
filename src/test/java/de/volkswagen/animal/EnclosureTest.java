@@ -34,6 +34,7 @@ public class EnclosureTest {
         animalTypes.add(AnimalType.GIRAFFE);
 
         Enclosure enclosure = new Enclosure(
+                -1l,
                 "name",
                 "description",
                 animalTypes,
@@ -50,6 +51,8 @@ public class EnclosureTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         Enclosure resEnclosure = response.getBody();
+
+        System.out.println(resEnclosure.getId());
 
         assertThat(resEnclosure.getName()).isEqualTo(enclosure.getName());
         assertThat(resEnclosure.getDescription()).isEqualTo(enclosure.getDescription());
