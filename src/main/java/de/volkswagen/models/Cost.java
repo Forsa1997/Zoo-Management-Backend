@@ -14,7 +14,7 @@ public class Cost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
-    private Long id;
+    private long id;
 
     private long monthlyCost;
 

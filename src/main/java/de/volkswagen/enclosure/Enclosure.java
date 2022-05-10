@@ -8,10 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @AllArgsConstructor
@@ -22,6 +19,7 @@ public class Enclosure {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Getter
+    @Column(name = "enclosure_id")
     private Long id;
 
     @Getter
@@ -34,26 +32,29 @@ public class Enclosure {
 
     @Getter
     @Setter
+    @ElementCollection(targetClass = AnimalType.class)
+    @Enumerated(EnumType.STRING)
+    @JoinTable(name = "enclosure_animaltypes",
+    joinColumns = @JoinColumn(name = "enclosure_id"))
     private List<AnimalType> animalTypes;
 
     @Getter
     @Setter
     private List<Animal> animals;
 
-    @Getter
-    @Setter
-    private Cost cost;
+ //   @Getter
+ //   @Setter
+//    private Cost cost;
 
-    public Cost getCostWithAnimals() {
-        if(this.cost == null){
-            this.cost = new Cost();
-        }
-        if (this.animals == null){
-            return this.cost;
-        }
-        return this.animals.stream()
-                .map(Animal::getCost)
-                .reduce(this.cost, Cost::add);
-    }
+ //   public Cost getCostWithAnimals() {
+ //       if(this.cost == null){
+ //           this.cost = new Cost();
+  //      }
+  //      if (this.animals == null){
+ //           return this.cost;
+  //      }
+   //              .map(Animal::getCost)
+ //               .reduce(this.cost, Cost::add);
+  //  }
 
 }

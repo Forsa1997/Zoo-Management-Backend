@@ -1,5 +1,10 @@
 package de.volkswagen.animal;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
+import java.util.stream.Stream;
+
 public enum AnimalType {
     KANGAROO,
     MONKEY,
@@ -24,6 +29,18 @@ public enum AnimalType {
     PENGUIN,
     HYENA,
     CAMEL,
-    KOALA
+    KOALA;
 
-}
+    @JsonCreator
+    public AnimalType encode(String name){
+        return Stream.of(AnimalType.values()).filter(e -> e.name().equals(name)).findAny().orElse(null);
+    }
+
+    @JsonValue
+    public String getValue(){
+        return this.name();
+    }
+
+    }
+
+

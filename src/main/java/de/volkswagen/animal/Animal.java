@@ -3,10 +3,7 @@ package de.volkswagen.animal;
 import de.volkswagen.models.Cost;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Animal {
@@ -18,12 +15,12 @@ public class Animal {
 
     private String name;
     private AnimalType animalType;
-    private Cost cost;
+//    private Cost cost;
 
 
-    public Cost getCost() {
-        return cost;
-    }
+//    public Cost getCost() {
+//        return cost;
+//   }
 
     public String getName() {
         return name;

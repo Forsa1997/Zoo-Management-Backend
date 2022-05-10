@@ -38,8 +38,7 @@ public class EnclosureTest {
                 "name",
                 "description",
                 animalTypes,
-                new ArrayList<>(),
-                new Cost(0)
+                new ArrayList<>()
         );
         HttpHeaders header = new HttpHeaders();
         HttpEntity<Enclosure> request = new HttpEntity<>(enclosure, header);
@@ -58,7 +57,6 @@ public class EnclosureTest {
         assertThat(resEnclosure.getDescription()).isEqualTo(enclosure.getDescription());
         assertThat(resEnclosure.getAnimalTypes()).isEqualTo(enclosure.getAnimalTypes());
         assertThat(resEnclosure.getAnimals()).isEqualTo(enclosure.getAnimals());
-        assertThat(resEnclosure.getCost()).isEqualTo(enclosure.getCost());
     }
 
 
