@@ -1,7 +1,6 @@
-package de.volkswagen.models;
+package de.volkswagen.models.jobposition;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -13,14 +12,10 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
-public class BankInfo {
+public class JobPositionComponent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String iban;
-    private String bic;
 }

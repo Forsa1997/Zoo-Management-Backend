@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.stream.Stream;
 
 public enum AnimalType {
+    UNDEFINED,
     KANGAROO,
     MONKEY,
     TIGER,
@@ -41,6 +42,4 @@ public enum AnimalType {
         return this.name();
     }
 
-    }
-
-
+}

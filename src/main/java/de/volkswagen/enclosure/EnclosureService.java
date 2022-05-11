@@ -30,10 +30,21 @@ public class EnclosureService {
     }
 
     public Enclosure getById(Long enclosureId) {
-        Enclosure enclosure = enclosureRepository.getById(enclosureId);
-        if (enclosure == null) {
+        return enclosureRepository.findById(enclosureId)
+                .orElseThrow(EnclosureNotFoundException::new);
+    }
+
+    public Enclosure update(Enclosure enclosure) {
+            if (!this.enclosureRepository.existsById(enclosure.getId())) {
+                throw new EnclosureNotFoundException();
+            }
+            return this.enclosureRepository.save(enclosure);
+    }
+
+    public void deleteById(Long enclosureId) {
+        if(!this.enclosureRepository.existsById(enclosureId)) {
             throw new EnclosureNotFoundException();
         }
-        return enclosure;
+        this.enclosureRepository.deleteById(enclosureId);
     }
 }

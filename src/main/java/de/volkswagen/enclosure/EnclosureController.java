@@ -33,24 +33,24 @@ public class EnclosureController {
     public Enclosure postEnclosure(
             @RequestBody Enclosure enclosure
     ){
-        return enclosureService.create(enclosure);
+        return this.enclosureService.create(enclosure);
     }
 
     @PatchMapping
     public Enclosure patchEnclosure(
             @RequestBody Enclosure enclosure
     ){
-        return null;
+        return this.enclosureService.update(enclosure);
     }
 
     @DeleteMapping("/{enclosureId}")
-    public boolean deleteEnclosure(
+    public void deleteEnclosure(
             @PathVariable("enclosureId") Long enclosureId
     ){
-        return false;
+        this.enclosureService.deleteById(enclosureId);
     }
 
-    @PutMapping("/{enclosureId}/animal/{animalId}")
+    @PostMapping("/{enclosureId}/animal/{animalId}")
     public Enclosure putAnimalIntoEnclosure(
             @PathVariable("enclosureId") Long enclosureId,
             @PathVariable("animalId") Long animalId

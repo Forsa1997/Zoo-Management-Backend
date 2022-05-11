@@ -1,32 +1,28 @@
 package de.volkswagen.animal;
 
 import de.volkswagen.models.Cost;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
 public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    private Long id;
+    private Long id = -1L;
 
-    private String name;
-    private AnimalType animalType;
-//    private Cost cost;
+    private String name = "";
+    private AnimalType animalType = AnimalType.UNDEFINED;
 
-
-//    public Cost getCost() {
-//        return cost;
-//   }
-
-    public String getName() {
-        return name;
-    }
-
-    public AnimalType getAnimalType() {
-        return animalType;
-    }
+    @OneToOne
+    private Cost cost;
 }

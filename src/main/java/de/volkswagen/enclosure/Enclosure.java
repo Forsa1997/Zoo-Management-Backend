@@ -10,42 +10,32 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter
 public class Enclosure {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Getter
-    @Column(name = "enclosure_id")
-    private Long id;
+    private Long id = -1L;
 
-    @Getter
-    @Setter
-    private String name;
+    private String name = "";
 
-    @Getter
-    @Setter
-    private String description;
+    private String description = "";
 
-    @Getter
-    @Setter
     @ElementCollection(targetClass = AnimalType.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable
-    private List<AnimalType> animalTypes;
+    private List<AnimalType> animalTypes = new ArrayList<>();
 
-    @Getter
-    @Setter
     @ElementCollection(targetClass = Animal.class)
     @CollectionTable
-    private List<Animal> animals;
+    private List<Animal> animals = new ArrayList<>();
 
- //   @Getter
- //   @Setter
-//    private Cost cost;
+    @OneToOne
+    private Cost cost;
 
  //   public Cost getCostWithAnimals() {
  //       if(this.cost == null){

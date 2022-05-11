@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class EnclosureControllerTest_MockedService {
+public class EnclosureControllerWithMockedServiceTest {
 
     @LocalServerPort
     private int port;
@@ -72,13 +72,10 @@ public class EnclosureControllerTest_MockedService {
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
 
-        Enclosure enclosure = new Enclosure(
-                1L,
-                "name",
-                "description",
-                animalTypes,
-                new ArrayList<>()
-        );
+        Enclosure enclosure = Enclosure.builder()
+                .name("name")
+                .description("description")
+                .build();
 
         when(enclosureService.getById(any(Long.class)))
                 .thenReturn(enclosure);
@@ -98,13 +95,11 @@ public class EnclosureControllerTest_MockedService {
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
 
-        Enclosure enclosure = new Enclosure(
-                1L,
-                "name",
-                "description",
-                animalTypes,
-                new ArrayList<>()
-        );
+        Enclosure enclosure = Enclosure.builder()
+                .name("name")
+                .description("description")
+                .animalTypes(animalTypes)
+                .build();
 
         List<Enclosure> enclosures = new ArrayList<>();
         enclosures.add(enclosure);
@@ -124,13 +119,11 @@ public class EnclosureControllerTest_MockedService {
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
 
-        Enclosure enclosure = new Enclosure(
-                1L,
-                "name",
-                "description",
-                animalTypes,
-                new ArrayList<>()
-        );
+        Enclosure enclosure = Enclosure.builder()
+                .name("name")
+                .description("description")
+                .animalTypes(animalTypes)
+                .build();
 
         List<Enclosure> enclosures = new ArrayList<>();
         enclosures.add(enclosure);
@@ -149,16 +142,7 @@ public class EnclosureControllerTest_MockedService {
     void postEnclosure_returns200OK() {
         String url = "/api/enclosure";
 
-        List<AnimalType> animalTypes = new ArrayList<>();
-        animalTypes.add(AnimalType.GIRAFFE);
-
-        Enclosure enclosure = new Enclosure(
-                -1L,
-                "name",
-                "description",
-                animalTypes,
-                new ArrayList<>()
-        );
+        Enclosure enclosure = new Enclosure();
 
         HttpHeaders header = new HttpHeaders();
         HttpEntity<Enclosure> request = new HttpEntity<>(enclosure, header);
@@ -178,21 +162,17 @@ public class EnclosureControllerTest_MockedService {
         String name = "name";
         String description = "description";
 
-        Enclosure enclosure = new Enclosure(
-                -1L,
-                name,
-                description,
-                animalTypes,
-                new ArrayList<>()
-        );
+        Enclosure enclosure = Enclosure.builder()
+                .name("name")
+                .description("description")
+                .animalTypes(animalTypes)
+                .build();
 
-        Enclosure matchEnclosure = new Enclosure(
-                1L,
-                name,
-                description,
-                animalTypes,
-                new ArrayList<>()
-        );
+        Enclosure matchEnclosure = Enclosure.builder()
+                .name("name")
+                .description("description")
+                .animalTypes(animalTypes)
+                .build();
 
         when(enclosureService.create(any(Enclosure.class))).thenReturn(matchEnclosure);
 

@@ -14,9 +14,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class EnclosureControllerTest_MockedRepository {
+public class EnclosureControllerWithMockedRepositoryTest {
 
     @LocalServerPort
     private int port;
@@ -32,7 +33,7 @@ public class EnclosureControllerTest_MockedRepository {
         String url = "/api/enclosure/1";
 
         when(enclosureRepository.findById(any(Long.class)))
-                .thenReturn(null);
+                .thenReturn(Optional.empty());
 
         ResponseEntity<Enclosure> response = restTemplate.getForEntity(url, Enclosure.class);
 
