@@ -3,17 +3,17 @@ package de.volkswagen.enclosure;
 import de.volkswagen.animal.Animal;
 import de.volkswagen.animal.AnimalType;
 import de.volkswagen.models.Cost;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
 public class Enclosure {
 
     @Id
@@ -34,12 +34,13 @@ public class Enclosure {
     @Setter
     @ElementCollection(targetClass = AnimalType.class)
     @Enumerated(EnumType.STRING)
-    @JoinTable(name = "enclosure_animaltypes",
-    joinColumns = @JoinColumn(name = "enclosure_id"))
+    @CollectionTable
     private List<AnimalType> animalTypes;
 
     @Getter
     @Setter
+    @ElementCollection(targetClass = Animal.class)
+    @CollectionTable
     private List<Animal> animals;
 
  //   @Getter

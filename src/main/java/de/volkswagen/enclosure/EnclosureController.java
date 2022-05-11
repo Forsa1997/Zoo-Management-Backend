@@ -1,5 +1,6 @@
 package de.volkswagen.enclosure;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +16,20 @@ public class EnclosureController {
     }
 
 
-    @GetMapping
-    public List<Enclosure> getEnclosures(){
+    @GetMapping("/{enclosureId}")
+    public Enclosure getEnclosureById(
+            @PathVariable Long enclosureId
+    ){
+        return this.enclosureService.getById(enclosureId);
+    }
 
-        return null;
+    @GetMapping
+    public EnclosureList getEnclosures(){
+        return this.enclosureService.getAll();
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Enclosure postEnclosure(
             @RequestBody Enclosure enclosure
     ){
@@ -32,7 +40,6 @@ public class EnclosureController {
     public Enclosure patchEnclosure(
             @RequestBody Enclosure enclosure
     ){
-
         return null;
     }
 
@@ -40,7 +47,6 @@ public class EnclosureController {
     public boolean deleteEnclosure(
             @PathVariable("enclosureId") Long enclosureId
     ){
-
         return false;
     }
 
@@ -58,9 +64,7 @@ public class EnclosureController {
             @PathVariable("enclosureId") Long enclosureId,
             @PathVariable("animalId") Long animalId
     ){
-
         return null;
     }
-
 
 }
