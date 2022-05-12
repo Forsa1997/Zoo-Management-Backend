@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Getter
+@ToString
 public class Enclosure {
 
     @Id
@@ -39,7 +40,7 @@ public class Enclosure {
     @CollectionTable
     private List<Staff> staff = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Cost cost = new Cost();
 
  //   public Cost getCostWithAnimals() {
