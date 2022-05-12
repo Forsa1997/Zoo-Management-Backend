@@ -55,7 +55,6 @@ public class EnclosureController {
             @PathVariable("enclosureId") Long enclosureId,
             @PathVariable("animalId") Long animalId
     ){
-
         return null;
     }
 

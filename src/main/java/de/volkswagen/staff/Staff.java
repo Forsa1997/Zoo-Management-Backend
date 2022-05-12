@@ -12,6 +12,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "staff")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -31,6 +32,9 @@ public class Staff {
     @OneToOne
     private Address address;
 
-    @OneToMany
+    @OneToMany(targetEntity = JobPositionComponent.class,
+            mappedBy = "owner",
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<JobPositionComponent> positions;
 }

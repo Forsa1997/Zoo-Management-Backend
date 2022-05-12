@@ -3,6 +3,7 @@ package de.volkswagen.enclosure;
 import de.volkswagen.animal.Animal;
 import de.volkswagen.animal.AnimalType;
 import de.volkswagen.models.Cost;
+import de.volkswagen.staff.Staff;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,8 +35,12 @@ public class Enclosure {
     @CollectionTable
     private List<Animal> animals = new ArrayList<>();
 
+    @ElementCollection(targetClass = Staff.class)
+    @CollectionTable
+    private List<Staff> staff = new ArrayList<>();
+
     @OneToOne
-    private Cost cost;
+    private Cost cost = new Cost();
 
  //   public Cost getCostWithAnimals() {
  //       if(this.cost == null){
