@@ -41,5 +41,4 @@ public enum AnimalType {
     public String getValue(){
         return this.name();
     }
-
 }

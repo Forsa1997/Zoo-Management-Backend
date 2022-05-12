@@ -10,35 +10,38 @@ import java.util.List;
 @RequestMapping("/animal")
 public class AnimalController {
 
+    private AnimalService animalService;
 
-    @GetMapping
-    public List<Animal> getAnimal(){
-
-        return null;
+    public AnimalController(
+            AnimalService animalService
+    ) {
+        this.animalService = animalService;
     }
 
-    @PutMapping
-    public Animal putAnimal(
+    @GetMapping
+    public AnimalList getAnimal(){
+        return this.animalService.getAll();
+    }
+
+    @PostMapping
+    public Animal postAnimal(
             @RequestBody Animal animal
     ){
-
-        return null;
+        return this.animalService.create(animal);
     }
 
     @PatchMapping
     public Animal patchAnimal(
             @RequestBody Animal animal
     ){
-
-        return null;
+        return this.animalService.update(animal);
     }
 
     @DeleteMapping("/{animalId}")
-    public boolean deleteAnimal(
+    public void deleteAnimal(
             @PathVariable("animalId") Long animalId
     ) {
-
-        return false;
+        this.animalService.deleteById(animalId);
     }
 
 }

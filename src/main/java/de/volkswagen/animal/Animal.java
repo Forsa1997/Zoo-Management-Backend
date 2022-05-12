@@ -24,5 +24,5 @@ public class Animal {
     private AnimalType animalType = AnimalType.UNDEFINED;
 
     @OneToOne
-    private Cost cost;
+    private Cost cost = new Cost();
 }
