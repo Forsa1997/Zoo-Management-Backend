@@ -1,6 +1,6 @@
 package de.volkswagen.enclosure;
 
-import org.springframework.http.HttpStatus;
+import static org.springframework.http.HttpStatus.*;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class EnclosureExceptionHandler {
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(IM_USED)
+    @ExceptionHandler(EnclosureAlreadyPresentException.class)
+    public void handleEnclosureAlreadyPresentException() { }
+
+    @ResponseStatus(NO_CONTENT)
     @ExceptionHandler(EmptyEnclosureListException.class)
     public void handleEmptyEnclosureListException() { }
 
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(EnclosureNotFoundException.class)
     public void handleEnclosureNotFoundException() { }
 }

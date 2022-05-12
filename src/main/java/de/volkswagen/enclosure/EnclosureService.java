@@ -16,8 +16,10 @@ public class EnclosureService {
         this.enclosureRepository = enclosureRepository;
     }
 
-
     public Enclosure create(Enclosure enclosure) {
+        if (enclosure.getId() != null && this.enclosureRepository.existsById(enclosure.getId())) {
+            throw new EnclosureAlreadyPresentException();
+        }
         return enclosureRepository.save(enclosure);
     }
 

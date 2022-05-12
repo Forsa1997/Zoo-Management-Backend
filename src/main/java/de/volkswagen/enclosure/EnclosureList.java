@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 public class EnclosureList {
-    List<Enclosure> enclosures;
+    private List<Enclosure> enclosures;
 
     public EnclosureList() {
         this.enclosures = new ArrayList<>();

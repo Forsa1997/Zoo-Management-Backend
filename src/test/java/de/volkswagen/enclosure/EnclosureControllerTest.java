@@ -1,9 +1,6 @@
 package de.volkswagen.enclosure;
 
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -12,14 +9,11 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
 
-import java.util.ArrayList;
-
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
+@ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EnclosureControllerTest {
@@ -37,12 +31,12 @@ class EnclosureControllerTest {
 
         ResponseEntity<EnclosureList> response = restTemplate.getForEntity(url, EnclosureList.class);
 
-        //assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
     }
 
     @Test
     @Order(1)
-    public void postEnclosure_returns201Created() {
+    public void postEnclosure_withoutId_returns201Created() {
         String url = "/api/enclosure";
 
         Enclosure enclosure = Enclosure.builder()
@@ -56,5 +50,43 @@ class EnclosureControllerTest {
         ResponseEntity<Enclosure> response = restTemplate.postForEntity(url,request, Enclosure.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    }
+
+    @Test
+    @Order(2)
+    public void postEnclosure_withFixedId_free_returns201Created() {
+        String url = "/api/enclosure";
+
+        Enclosure enclosure = Enclosure.builder()
+                .id(2L)
+                .name("name")
+                .description("description")
+                .build();
+
+        HttpHeaders header = new HttpHeaders();
+        HttpEntity<Enclosure> request = new HttpEntity<>(enclosure, header);
+
+        ResponseEntity<Enclosure> response = restTemplate.postForEntity(url,request, Enclosure.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    }
+
+    @Test
+    @Order(3)
+    public void postEnclosure_withFixedId_used_returns226IMUSED() {
+        String url = "/api/enclosure";
+
+        Enclosure enclosure = Enclosure.builder()
+                .id(2L)
+                .name("name")
+                .description("description")
+                .build();
+
+        HttpHeaders header = new HttpHeaders();
+        HttpEntity<Enclosure> request = new HttpEntity<>(enclosure, header);
+
+        ResponseEntity<Enclosure> response = restTemplate.postForEntity(url,request, Enclosure.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.IM_USED);
     }
 }
