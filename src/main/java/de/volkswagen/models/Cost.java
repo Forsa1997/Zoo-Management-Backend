@@ -2,28 +2,16 @@ package de.volkswagen.models;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
+@Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Getter
 public class Cost {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private long monthlyCost;
-
-    public Cost(long monthlyCost) {
-        this.monthlyCost = monthlyCost;
-    }
+    private long monthlyCost = 0L;
 
     public static Cost add(Cost cost1, Cost cost2) {
         return new Cost(cost1.monthlyCost + cost2.monthlyCost);

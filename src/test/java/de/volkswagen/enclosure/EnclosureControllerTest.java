@@ -1,5 +1,6 @@
 package de.volkswagen.enclosure;
 
+import de.volkswagen.models.Cost;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,12 +43,13 @@ class EnclosureControllerTest {
         Enclosure enclosure = Enclosure.builder()
                 .name("name")
                 .description("description")
+                .cost(new Cost())
                 .build();
 
         HttpHeaders header = new HttpHeaders();
         HttpEntity<Enclosure> request = new HttpEntity<>(enclosure, header);
 
-        ResponseEntity<Enclosure> response = restTemplate.postForEntity(url,request, Enclosure.class);
+        ResponseEntity<Enclosure> response = restTemplate.postForEntity(url, request, Enclosure.class);
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     }
@@ -61,6 +63,7 @@ class EnclosureControllerTest {
                 .id(2L)
                 .name("name")
                 .description("description")
+                .cost(new Cost())
                 .build();
 
         HttpHeaders header = new HttpHeaders();
@@ -80,6 +83,7 @@ class EnclosureControllerTest {
                 .id(2L)
                 .name("name")
                 .description("description")
+                .cost(new Cost())
                 .build();
 
         HttpHeaders header = new HttpHeaders();

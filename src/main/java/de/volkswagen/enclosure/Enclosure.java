@@ -39,7 +39,7 @@ public class Enclosure {
     @CollectionTable
     private List<Staff> staff = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @Embedded
     private Cost cost = new Cost();
 
  //   public Cost getCostWithAnimals() {

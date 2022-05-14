@@ -1,10 +1,7 @@
 package de.volkswagen.animal;
 
 import de.volkswagen.models.Cost;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -23,6 +20,7 @@ public class Animal {
     private String name = "";
     private AnimalType animalType = AnimalType.UNDEFINED;
 
-    @OneToOne
+    @Embedded
+    @NonNull
     private Cost cost = new Cost();
 }

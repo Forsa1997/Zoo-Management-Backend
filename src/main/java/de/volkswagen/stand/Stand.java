@@ -23,7 +23,7 @@ public class Stand {
     private String description;
     private StandType standType;
 
-    @OneToOne
-    private Cost cost;
+    @Embedded
+    private Cost cost = new Cost();
 
 }
