@@ -40,20 +40,16 @@ public class DatabasePopulationRunner implements CommandLineRunner {
                         animalService.create(Animal.builder()
                                 .name("Hugo")
                                 .animalType(AnimalType.MONKEY)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Uschi")
                                 .animalType(AnimalType.MONKEY)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Franko")
                                 .animalType(AnimalType.MONKEY)
-                                .cost(new Cost())
                                 .build())
                 ))
-                .cost(new Cost())
                 .build());
 
         enclosureService.create(Enclosure.builder()
@@ -64,30 +60,24 @@ public class DatabasePopulationRunner implements CommandLineRunner {
                         animalService.create(Animal.builder()
                                 .name("Snekmann")
                                 .animalType(AnimalType.SNAKE)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Snekfrau")
                                 .animalType(AnimalType.SNAKE)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Snekperson")
                                 .animalType(AnimalType.SNAKE)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Sneksnek")
                                 .animalType(AnimalType.SNAKE)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Snekhelikopter")
                                 .animalType(AnimalType.SNAKE)
-                                .cost(new Cost())
                                 .build())
                 ))
-                .cost(new Cost())
                 .build());
 
         enclosureService.create(Enclosure.builder()
@@ -98,30 +88,24 @@ public class DatabasePopulationRunner implements CommandLineRunner {
                         animalService.create(Animal.builder()
                                 .name("Nico")
                                 .animalType(AnimalType.GIRAFFE)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Odin")
                                 .animalType(AnimalType.GIRAFFE)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Zeus")
                                 .animalType(AnimalType.HYENA)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Kaan")
                                 .animalType(AnimalType.ZEBRA)
-                                .cost(new Cost())
                                 .build()),
                         animalService.create(Animal.builder()
                                 .name("Emre")
                                 .animalType(AnimalType.ZEBRA)
-                                .cost(new Cost())
                                 .build())
                 ))
-                .cost(new Cost())
                 .build());
     }
 }

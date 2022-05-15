@@ -15,12 +15,15 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id = -1L;
+    private Long id;
 
+    @Builder.Default
     private String name = "";
+
+    @Builder.Default
     private AnimalType animalType = AnimalType.UNDEFINED;
 
     @Embedded
-    @NonNull
+    @Builder.Default
     private Cost cost = new Cost();
 }

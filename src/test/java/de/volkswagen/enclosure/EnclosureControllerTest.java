@@ -43,7 +43,6 @@ class EnclosureControllerTest {
         Enclosure enclosure = Enclosure.builder()
                 .name("name")
                 .description("description")
-                .cost(new Cost())
                 .build();
 
         HttpHeaders header = new HttpHeaders();
@@ -63,7 +62,6 @@ class EnclosureControllerTest {
                 .id(2L)
                 .name("name")
                 .description("description")
-                .cost(new Cost())
                 .build();
 
         HttpHeaders header = new HttpHeaders();
@@ -83,7 +81,6 @@ class EnclosureControllerTest {
                 .id(2L)
                 .name("name")
                 .description("description")
-                .cost(new Cost())
                 .build();
 
         HttpHeaders header = new HttpHeaders();

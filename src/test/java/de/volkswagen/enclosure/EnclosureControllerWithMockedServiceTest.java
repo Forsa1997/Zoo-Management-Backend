@@ -36,7 +36,7 @@ public class EnclosureControllerWithMockedServiceTest {
         String url = "/api/enclosure/1";
 
         when(enclosureService.getById(any(Long.class)))
-        .thenReturn(new Enclosure());
+        .thenReturn(Enclosure.builder().build());
 
         ResponseEntity<Enclosure> response = restTemplate.getForEntity(url, Enclosure.class);
 
@@ -48,7 +48,7 @@ public class EnclosureControllerWithMockedServiceTest {
         String url = "/api/enclosure/number";
 
         when(enclosureService.getById(any(Long.class)))
-                .thenReturn(new Enclosure());
+                .thenReturn(Enclosure.builder().build());
 
         ResponseEntity<Enclosure> response = restTemplate.getForEntity(url, Enclosure.class);
 
@@ -60,7 +60,7 @@ public class EnclosureControllerWithMockedServiceTest {
         String url = "/api/enclosure/1234567890123456789012345678901234567890";
 
         when(enclosureService.getById(any(Long.class)))
-                .thenReturn(new Enclosure());
+                .thenReturn(Enclosure.builder().build());
 
         ResponseEntity<Enclosure> response = restTemplate.getForEntity(url, Enclosure.class);
 
@@ -77,6 +77,7 @@ public class EnclosureControllerWithMockedServiceTest {
         Enclosure enclosure = Enclosure.builder()
                 .name("name")
                 .description("description")
+                .animalTypes(animalTypes)
                 .build();
 
         when(enclosureService.getById(any(Long.class)))
@@ -144,7 +145,7 @@ public class EnclosureControllerWithMockedServiceTest {
     void postEnclosure_returns200OK() {
         String url = "/api/enclosure";
 
-        Enclosure enclosure = new Enclosure();
+        Enclosure enclosure = Enclosure.builder().build();
 
         HttpHeaders header = new HttpHeaders();
         HttpEntity<Enclosure> request = new HttpEntity<>(enclosure, header);
