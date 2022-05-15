@@ -33,7 +33,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void getEnclosureById_returns200OK() {
-        String url = "/api/enclosure/1";
+        String url = "/enclosure/1";
 
         when(enclosureService.getById(any(Long.class)))
         .thenReturn(Enclosure.builder().build());
@@ -45,7 +45,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void getEnclosureById_returns400BadRequestForInvalidParameter_String() {
-        String url = "/api/enclosure/number";
+        String url = "/enclosure/number";
 
         when(enclosureService.getById(any(Long.class)))
                 .thenReturn(Enclosure.builder().build());
@@ -57,7 +57,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void getEnclosureById_returns_400BadRequest_forInvalidParameter_tooLong() {
-        String url = "/api/enclosure/1234567890123456789012345678901234567890";
+        String url = "/enclosure/1234567890123456789012345678901234567890";
 
         when(enclosureService.getById(any(Long.class)))
                 .thenReturn(Enclosure.builder().build());
@@ -69,7 +69,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void getEnclosureById_returns_Enclosure() {
-        String url = "/api/enclosure/1";
+        String url = "/enclosure/1";
 
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
@@ -93,7 +93,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void getEnclosures_returns_200OK() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
@@ -117,7 +117,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void getEnclosures_returns_200OK_withContent() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
@@ -143,7 +143,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void postEnclosure_returns200OK() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         Enclosure enclosure = Enclosure.builder().build();
 
@@ -157,7 +157,7 @@ public class EnclosureControllerWithMockedServiceTest {
 
     @Test
     void postEnclosure_returnsEntityWithNewId() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         List<AnimalType> animalTypes = new ArrayList<>();
         animalTypes.add(AnimalType.GIRAFFE);
@@ -186,12 +186,11 @@ public class EnclosureControllerWithMockedServiceTest {
 
         Enclosure resEnclosure = response.getBody();
 
+        assertThat(resEnclosure).isNotNull();
         assertThat(resEnclosure.getName()).isEqualTo(matchEnclosure.getName());
         assertThat(resEnclosure.getDescription()).isEqualTo(matchEnclosure.getDescription());
         assertThat(resEnclosure.getAnimalTypes()).isEqualTo(matchEnclosure.getAnimalTypes());
         assertThat(resEnclosure.getAnimals()).isEqualTo(matchEnclosure.getAnimals());
         assertThat(resEnclosure.getId()).isEqualTo(matchEnclosure.getId());
     }
-
-
 }

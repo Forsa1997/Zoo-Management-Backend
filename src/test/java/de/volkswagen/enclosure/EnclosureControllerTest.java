@@ -28,7 +28,7 @@ class EnclosureControllerTest {
     @Test
     @Order(0)
     public void getEnclosures_returns204NoContent() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         ResponseEntity<EnclosureList> response = restTemplate.getForEntity(url, EnclosureList.class);
 
@@ -38,7 +38,7 @@ class EnclosureControllerTest {
     @Test
     @Order(1)
     public void postEnclosure_withoutId_returns201Created() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         Enclosure enclosure = Enclosure.builder()
                 .name("name")
@@ -56,7 +56,7 @@ class EnclosureControllerTest {
     @Test
     @Order(2)
     public void postEnclosure_withFixedId_free_returns201Created() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         Enclosure enclosure = Enclosure.builder()
                 .id(2L)
@@ -75,7 +75,7 @@ class EnclosureControllerTest {
     @Test
     @Order(3)
     public void postEnclosure_withFixedId_used_returns226IMUSED() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         Enclosure enclosure = Enclosure.builder()
                 .id(2L)

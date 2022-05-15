@@ -32,7 +32,7 @@ public class EnclosureControllerWithMockedRepositoryTest {
 
     @Test
     void getEnclosureById_returns404NotFound() {
-        String url = "/api/enclosure/1";
+        String url = "/enclosure/1";
 
         when(enclosureRepository.findById(any(Long.class)))
                 .thenReturn(Optional.empty());
@@ -44,7 +44,7 @@ public class EnclosureControllerWithMockedRepositoryTest {
 
     @Test
     void getEnclosures_returns_204NoContent() {
-        String url = "/api/enclosure";
+        String url = "/enclosure";
 
         when(enclosureRepository.findAll())
                 .thenReturn(new ArrayList<>());
