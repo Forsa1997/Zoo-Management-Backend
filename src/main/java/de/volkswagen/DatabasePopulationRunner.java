@@ -5,15 +5,14 @@ import de.volkswagen.animal.AnimalService;
 import de.volkswagen.animal.AnimalType;
 import de.volkswagen.enclosure.Enclosure;
 import de.volkswagen.enclosure.EnclosureService;
-import de.volkswagen.models.Cost;
+import de.volkswagen.staff.Staff;
+import de.volkswagen.staff.StaffService;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 @Profile("!test")
 @Component
@@ -21,18 +20,21 @@ public class DatabasePopulationRunner implements CommandLineRunner {
 
     private EnclosureService enclosureService;
     private AnimalService animalService;
+    private StaffService staffService;
 
     public DatabasePopulationRunner(
             EnclosureService enclosureService,
-            AnimalService animalService
+            AnimalService animalService,
+            StaffService staffService
     ) {
         this.enclosureService = enclosureService;
         this.animalService = animalService;
+        this.staffService = staffService;
     }
 
     @Override
     public void run(String... args) {
-        enclosureService.create(Enclosure.builder()
+        Enclosure enclosure1 = enclosureService.create(Enclosure.builder()
                 .name("Affenhaus")
                 .description("Kleine Äffchen")
                 .animalTypes(Collections.singletonList(AnimalType.MONKEY))
@@ -50,6 +52,7 @@ public class DatabasePopulationRunner implements CommandLineRunner {
                                 .animalType(AnimalType.MONKEY)
                                 .build())
                 ))
+                .staff(Collections.singletonList(staffService.create(Staff.builder().firstName("Affenklaus").build())))
                 .build());
 
         enclosureService.create(Enclosure.builder()

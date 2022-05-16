@@ -5,12 +5,9 @@ import de.volkswagen.animal.Animal;
 import de.volkswagen.animal.AnimalAlreadyPresentException;
 import de.volkswagen.animal.AnimalNotFoundException;
 import de.volkswagen.animal.AnimalService;
-import org.jboss.jandex.ClassInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.Properties;
 
 @Service
 public class EnclosureService {
@@ -20,14 +17,14 @@ public class EnclosureService {
     public EnclosureService(
             EnclosureRepository enclosureRepository,
             AnimalService animalService
-    ){
+    ) {
         this.enclosureRepository = enclosureRepository;
         this.animalService = animalService;
     }
 
     public Enclosure create(Enclosure enclosure) {
         if (enclosure.getId() != null && this.enclosureRepository.existsById(enclosure.getId())) {
-            throw new EnclosureAlreadyPresentException();
+            throw new EnclosureAlreadyPresentException(enclosure.getId());
         }
         return enclosureRepository.save(enclosure);
     }
@@ -52,7 +49,7 @@ public class EnclosureService {
 
     public Enclosure getById(Long enclosureId) {
         return enclosureRepository.findById(enclosureId)
-            .orElseThrow(() -> new EnclosureNotFoundException(enclosureId));
+                .orElseThrow(() -> new EnclosureNotFoundException(enclosureId));
     }
 
     public Enclosure update(
@@ -67,7 +64,7 @@ public class EnclosureService {
     public void deleteById(
             Long enclosureId
     ) {
-        if(!this.enclosureRepository.existsById(enclosureId)) {
+        if (!this.enclosureRepository.existsById(enclosureId)) {
             throw new EnclosureNotFoundException(enclosureId);
         }
         this.enclosureRepository.deleteById(enclosureId);
@@ -79,10 +76,7 @@ public class EnclosureService {
     ) {
         Animal animal = this.animalService.getById(animalId);
         Enclosure enclosure = this.enclosureRepository
-            .findById(enclosureId).orElseThrow(() -> new EnclosureNotFoundException(enclosureId));
-        if (animal == null) {
-            throw new AnimalNotFoundException(animalId);
-        }
+                .findById(enclosureId).orElseThrow(() -> new EnclosureNotFoundException(enclosureId));
         if (enclosure.getAnimals().contains(animal)) {
             throw new AnimalAlreadyPresentException(animalId);
         }
@@ -99,7 +93,7 @@ public class EnclosureService {
     ) {
         Animal animal = this.animalService.getById(animalId);
         Enclosure enclosure = this.enclosureRepository
-            .findById(enclosureId).orElseThrow(() -> new EnclosureNotFoundException(enclosureId));
+                .findById(enclosureId).orElseThrow(() -> new EnclosureNotFoundException(enclosureId));
         if (animal == null) {
             throw new AnimalNotFoundException(animalId);
         }

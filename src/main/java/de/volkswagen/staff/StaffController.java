@@ -2,67 +2,69 @@ package de.volkswagen.staff;
 
 
 import de.volkswagen.enclosure.Enclosure;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/staff")
 public class StaffController {
 
+    private StaffService staffService;
 
-    @GetMapping
-    public List<Staff> getStaff(){
-
-        return null;
+    public StaffController(StaffService staffService) {
+        this.staffService = staffService;
     }
 
-    @PutMapping
-    public Staff putStaff(@RequestBody Staff staff){
+    @GetMapping
+    public StaffList getStaffs(
+    ) {
+        return this.staffService.getAll();
+    }
 
-        return null;
+    @GetMapping("/{staffId}")
+    public Staff getStaffById(
+            @PathVariable Long staffId
+    ) {
+        return this.staffService.getById(staffId);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Staff postStaff(@RequestBody Staff staff) {
+        return this.staffService.create(staff);
     }
 
     @PatchMapping
-    public Staff patchStaff(@RequestBody Staff staff){
-
-        return null;
+    public Staff patchStaff(
+            @RequestBody Staff staff
+    ) {
+        return this.staffService.update(staff);
     }
 
     @DeleteMapping("/{staffId}")
-    public boolean deleteStaff(@PathVariable("staffId") Long staffId){
-
-       return false;
+    public void deleteStaff(
+            @PathVariable("staffId") Long staffId
+    ) {
+        this.staffService.deleteById(staffId);
     }
 
-    @PutMapping("/{staffId}/enclosure/{enclosureId}")
+    @PostMapping("/{staffId}/enclosure/{enclosureId}")
     public Enclosure assignStaffToEnclosure(
             @PathVariable("staffId") Long staffId,
             @PathVariable("enclosureId") Long enclosureId
-    ){
-        return null;
-    }
-
-    @PatchMapping("/{staffId}/enclosure/{enclosureId}")
-    public Enclosure patchStaffFromEnclosure(
-            @PathVariable("staffId") Long staffId,
-            @PathVariable("enclosureId") Long enclosureId
-    ){
-
-        return null;
+    ) {
+        return this.staffService.assignStaffToEnclosure(staffId, enclosureId);
     }
 
     @DeleteMapping("/{staffId}/enclosure/{enclosureId}")
     public Enclosure deleteStaffFromEnclosure(
             @PathVariable("staffId") Long staffId,
             @PathVariable("enclosureId") Long enclosureId
-    ){
+    ) {
 
         return null;
     }
-
-
-
 
 
 }

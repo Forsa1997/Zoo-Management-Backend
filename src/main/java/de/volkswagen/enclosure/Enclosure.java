@@ -7,12 +7,14 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.volkswagen.animal.Animal;
 import de.volkswagen.animal.AnimalType;
 import de.volkswagen.models.Cost;
+import de.volkswagen.models.jobposition.AnimalKeeper;
 import de.volkswagen.staff.Staff;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -25,7 +27,7 @@ public class Enclosure {
     final static int MAX_ANIMALS = 25;
 
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Builder.Default
@@ -60,15 +62,18 @@ public class Enclosure {
     @Builder.Default
     private Cost cost = new Cost();
 
- //   public Cost getCostWithAnimals() {
- //       if(this.cost == null){
- //           this.cost = new Cost();
-  //      }
-  //      if (this.animals == null){
- //           return this.cost;
-  //      }
-   //              .map(Animal::getCost)
- //               .reduce(this.cost, Cost::add);
-  //  }
+    @ManyToMany
+    private Set<AnimalKeeper> animalKeepers;
+
+    //   public Cost getCostWithAnimals() {
+    //       if(this.cost == null){
+    //           this.cost = new Cost();
+    //      }
+    //      if (this.animals == null){
+    //           return this.cost;
+    //      }
+    //              .map(Animal::getCost)
+    //               .reduce(this.cost, Cost::add);
+    //  }
 
 }
