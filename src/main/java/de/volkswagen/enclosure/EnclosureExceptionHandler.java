@@ -19,4 +19,8 @@ public class EnclosureExceptionHandler {
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(EnclosureNotFoundException.class)
     public void handleEnclosureNotFoundException() { }
+
+    @ResponseStatus(BAD_REQUEST)
+    @ExceptionHandler(EnclosureAnimalLimitExceededException.class)
+    public void handleEnclosureAnimalLimitExceededException() { }
 }

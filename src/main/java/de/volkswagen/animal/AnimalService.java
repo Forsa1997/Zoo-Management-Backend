@@ -14,8 +14,9 @@ public class AnimalService {
     }
 
     public Animal create(Animal animal) {
-        if (animal.getId() != null && animalRepository.existsById(animal.getId())) {
-            throw new AnimalAlreadyPresentException();
+        Long animalId = animal.getId();
+        if (animalId != null && animalRepository.existsById(animalId)) {
+            throw new AnimalAlreadyPresentException(animalId);
         }
         return this.animalRepository.save(animal);
     }
@@ -28,19 +29,28 @@ public class AnimalService {
         return new AnimalList(animals);
     }
 
+    public AnimalList getByIds(List<Long> animalIds) {
+        List<Animal> animals = this.animalRepository.findAllById(animalIds);
+        if (animals.isEmpty()) {
+            throw new EmptyAnimalListException();
+        }
+        return new AnimalList(animals);
+    }
+
     public Animal getById(Long animalId) {
         return animalRepository.findById(animalId)
-                .orElseThrow(AnimalNotFoundException::new);
+                .orElseThrow(() -> new AnimalNotFoundException(animalId));
     }
     public Animal update(Animal animal) {
-        if (!this.animalRepository.existsById(animal.getId())) {
-            throw new AnimalNotFoundException();
+        Long animalId = animal.getId();
+        if (!this.animalRepository.existsById(animalId)) {
+            throw new AnimalNotFoundException(animalId);
         }
         return this.animalRepository.save(animal);
     }
     public void deleteById(Long animalId) {
         if (!this.animalRepository.existsById(animalId)) {
-            throw new AnimalNotFoundException();
+            throw new AnimalNotFoundException(animalId);
         }
         this.animalRepository.deleteById(animalId);
     }

@@ -15,4 +15,8 @@ public class AnimalExceptionHandler {
     @ResponseStatus(NOT_FOUND)
     @ExceptionHandler(AnimalNotFoundException.class)
     public void handleAnimalNotFoundException() { }
+
+    @ResponseStatus(NO_CONTENT)
+    @ExceptionHandler(EmptyAnimalListException.class)
+    public void handleEmptyAnimalListException() { }
 }

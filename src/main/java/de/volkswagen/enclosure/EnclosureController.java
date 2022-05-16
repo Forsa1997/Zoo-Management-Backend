@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/enclosure")
@@ -24,8 +25,12 @@ public class EnclosureController {
     }
 
     @GetMapping
-    public EnclosureList getEnclosures(){
-        return this.enclosureService.getAll();
+    public EnclosureList getEnclosures(
+            @RequestBody Optional<List<Long>> enclosureIds
+    ){
+        return enclosureIds.isPresent()
+        ? this.enclosureService.getByIds(enclosureIds.get())
+        : this.enclosureService.getAll();
     }
 
     @PostMapping
@@ -55,7 +60,7 @@ public class EnclosureController {
             @PathVariable("enclosureId") Long enclosureId,
             @PathVariable("animalId") Long animalId
     ){
-        return null;
+        return this.enclosureService.addAnimalToEnclosure(animalId, enclosureId);
     }
 
     @DeleteMapping("/{enclosureId}/animal/{animalId}")
@@ -63,7 +68,6 @@ public class EnclosureController {
             @PathVariable("enclosureId") Long enclosureId,
             @PathVariable("animalId") Long animalId
     ){
-        return null;
+        return this.enclosureService.removeAnimalFromEnclosure(animalId, enclosureId);
     }
-
 }

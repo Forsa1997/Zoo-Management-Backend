@@ -1,5 +1,9 @@
 package de.volkswagen.enclosure;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.volkswagen.animal.Animal;
 import de.volkswagen.animal.AnimalType;
 import de.volkswagen.models.Cost;
@@ -17,6 +21,8 @@ import java.util.List;
 @Getter
 @ToString
 public class Enclosure {
+
+    final static int MAX_ANIMALS = 25;
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -37,11 +43,17 @@ public class Enclosure {
     @ElementCollection(targetClass = Animal.class)
     @CollectionTable
     @Builder.Default
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonProperty("animalId")
     private List<Animal> animals = new ArrayList<>();
 
     @ElementCollection(targetClass = Staff.class)
     @CollectionTable
     @Builder.Default
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonProperty("staffId")
     private List<Staff> staff = new ArrayList<>();
 
     @Embedded

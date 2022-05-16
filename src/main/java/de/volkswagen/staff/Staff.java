@@ -1,5 +1,9 @@
 package de.volkswagen.staff;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import de.volkswagen.models.Address;
 import de.volkswagen.models.BankInfo;
 import de.volkswagen.models.jobposition.JobPositionComponent;
@@ -29,7 +33,7 @@ public class Staff {
     @OneToOne
     private BankInfo bankInformations;
 
-    @OneToOne
+    @Embedded
     private Address address;
 
     @OneToMany(targetEntity = JobPositionComponent.class,

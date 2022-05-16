@@ -5,6 +5,7 @@ import de.volkswagen.staff.Staff;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/animal")
@@ -19,8 +20,12 @@ public class AnimalController {
     }
 
     @GetMapping
-    public AnimalList getAnimal(){
-        return this.animalService.getAll();
+    public AnimalList getAnimal(
+            @RequestBody Optional<List<Long>> animalIds
+    ){
+        return animalIds.isPresent()
+            ? this.animalService.getByIds(animalIds.get())
+            : this.animalService.getAll();
     }
 
     @PostMapping
@@ -43,5 +48,4 @@ public class AnimalController {
     ) {
         this.animalService.deleteById(animalId);
     }
-
 }
