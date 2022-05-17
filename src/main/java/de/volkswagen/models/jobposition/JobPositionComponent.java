@@ -23,4 +23,8 @@ public class JobPositionComponent {
     @ManyToOne(targetEntity = Staff.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id", referencedColumnName = "id", nullable = false)
     private Staff owner;
+
+    public JobPositionComponent(Staff owner) {
+        this.owner = owner;
+    }
 }

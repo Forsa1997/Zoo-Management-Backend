@@ -1,7 +1,5 @@
 package de.volkswagen.animal;
 
-
-import de.volkswagen.staff.Staff;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

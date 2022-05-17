@@ -1,8 +1,8 @@
 package de.volkswagen.staff;
 
-
 import de.volkswagen.enclosure.Enclosure;
 import de.volkswagen.enclosure.EnclosureService;
+import de.volkswagen.models.jobposition.AnimalKeeper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -46,13 +46,18 @@ public class StaffService {
         this.staffRepository.deleteById(staffId);
     }
 
-
     public Enclosure assignStaffToEnclosure(Long staffId, Long enclosureId) {
 
         Enclosure enclosure = this.enclosureService.getById(enclosureId);
         Staff staff = this.staffRepository.findById(staffId)
                 .orElseThrow(() -> new StaffNotFoundException(staffId));
-        
-        return null;
+        if (enclosure.getStaff().contains(staff)) {
+            throw new StaffAlreadyPresentException(staffId);
+        }
+        if (!staff.getPositions().stream().anyMatch(pos -> pos instanceof AnimalKeeper)) {
+            throw new StaffNotQualifiedException(staffId);
+        }
+        enclosure.getStaff().add(staff);
+        return enclosureService.update(enclosure);
     }
 }

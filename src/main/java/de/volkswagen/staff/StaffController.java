@@ -1,10 +1,8 @@
 package de.volkswagen.staff;
 
-
 import de.volkswagen.enclosure.Enclosure;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
 
 @RestController
 @RequestMapping("/staff")
@@ -65,6 +63,4 @@ public class StaffController {
 
         return null;
     }
-
-
 }

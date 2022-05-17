@@ -42,6 +42,7 @@ public class Enclosure {
     @Builder.Default
     private List<AnimalType> animalTypes = new ArrayList<>();
 
+    // OneToMany, eigentlich
     @ElementCollection(targetClass = Animal.class)
     @CollectionTable
     @Builder.Default

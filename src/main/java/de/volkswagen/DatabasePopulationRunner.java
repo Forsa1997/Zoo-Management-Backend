@@ -81,6 +81,7 @@ public class DatabasePopulationRunner implements CommandLineRunner {
                                 .animalType(AnimalType.SNAKE)
                                 .build())
                 ))
+                .staff(Collections.singletonList(staffService.create(Staff.builder().firstName("Schlangenludwig").build())))
                 .build());
 
         enclosureService.create(Enclosure.builder()
@@ -109,6 +110,7 @@ public class DatabasePopulationRunner implements CommandLineRunner {
                                 .animalType(AnimalType.ZEBRA)
                                 .build())
                 ))
+                .staff(Collections.singletonList(staffService.create(Staff.builder().firstName("Sarahsavannah").build())))
                 .build());
     }
 }

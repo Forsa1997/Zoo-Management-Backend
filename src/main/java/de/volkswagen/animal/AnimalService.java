@@ -7,7 +7,7 @@ import java.util.List;
 @Service
 public class AnimalService {
 
-    AnimalRepository animalRepository;
+    private AnimalRepository animalRepository;
 
     public AnimalService(AnimalRepository animalRepository) {
         this.animalRepository = animalRepository;
